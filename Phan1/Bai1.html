@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai1</title>
+</head>
+<body>
+    <header>
+    <h2>Bài 1: Tính giá sau giảm giá</h2>
+    <h3>Mô tả bài toán:</h3>
+    <p>Viết hàm calculateDiscount(price, discountPercent) để tính giá sau khi giảm giá. Hàm nhận vào
+giá gốc và tỷ lệ giảm giá (%), trả về giá cuối cùng.</p>
+    </header>
+     <p>Bài làm:</p>
+    
+     <span>Price:</span>
+     <input type="text" id="price" placeholder="Enter the price..."
+     style="margin-left: 25px">
+     <br>
+     
+     <span>Discount:</span>
+     <input type="text" id="discount" placeholder="Enter the discount...">
+     
+     <button id="calculation">Submit</button>
+     <hr>
+
+     <div id = "result"></div>
+
+     <script>
+        function calculateDiscount(price, discountPercent)
+        {
+            let discountedprice = price - price *  discountPercent / 100;
+            console.log(discountedprice);
+            return discountedprice;
+        }
+
+        
+        document.getElementById("calculation").onclick = function() 
+        {
+            let price = Number(document.getElementById("price").value);
+            let discount = Number(document.getElementById("discount").value);
+
+            let result = calculateDiscount(price, discount);
+
+            document.getElementById("result").innerHTML =
+            `<p>Discounted Price: ${result}</p>`;
+        }
+        
+     </script>
+</body>
+</html>

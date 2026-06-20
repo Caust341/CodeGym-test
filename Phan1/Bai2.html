@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai2</title>
+</head>
+<body>
+    <header>
+    <h2>Bài 2: Tính tổng mảng số</h2>
+    <h3>Mô tả bài toán:</h3>
+    <p>Viết hàm sumArray(arr) để tính tổng tất cả phần tử trong mảng. Sử dụng vòng lặp for.</p>
+    </header>
+     <p>Bài làm:</p>
+
+    <span>Number of Elements</span>
+    <input type="number" id = "listLength" placeholder = "Number of elements">
+    <button id = "s">Submit</button>
+    <hr>
+
+    
+
+    <div id="addElement" style="display:none">
+        <input type="number" id = "element" placeholder = "Enter a value: ">
+        <button id = "esubmit">Submit</button>       
+    </div>
+
+    <div id="showing_array"></div>
+
+    <div id="showing_sum"></div>
+
+    <script>
+        let arraynum = [];
+        
+        function sumArray(arraynum) {
+            let sum = 0;
+            for (const element of arraynum) {
+                sum += element;
+            }
+            console.log(sum);
+            document.getElementById("showing_sum").innerHTML = `
+                Array Sum: ${sum}
+            `
+        }
+
+        function addingArray() {
+            let element = Number(document.getElementById("element").value);    
+            arraynum.push(element);   
+            document.getElementById("showing_array").innerHTML +=
+                    `<span> ${element}  </span>`;
+        }
+        
+    
+        document.getElementById("s").onclick = function() {
+            let listLength = Number(document.getElementById("listLength").value);
+            if (listLength > 0) {               
+                 document.getElementById("addElement").style.display = "block"; 
+                 document.getElementById("showing_array").innerHTML = "Array: "
+                 document.getElementById("esubmit").disabled = false;
+                 document.getElementById("esubmit").onclick = function() {       
+                 addingArray(arraynum);
+                 sumArray(arraynum);
+                 if (arraynum.length == listLength) {
+                    document.getElementById("esubmit").disabled = true;
+                }
+            }
+                 
+            }
+        };
+        
+    </script>
+</body>
+</html>

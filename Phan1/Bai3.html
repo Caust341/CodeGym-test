@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+    <h2>Bài 3: Kiểm tra xếp hạng</h2>
+    <h3>Mô tả bài toán:</h3>
+    <p>Viết hàm checkGrade(score) với quy tắc điểm như sau: </p> 
+    <span>Điểm: </span>
+    <ul> 
+        <li>&gt;= 80 → &#39;A&#39;</li> 
+        <li>&gt;= 70 → &#39;B&#39;</li>
+        <li>&gt;= 60 → &#39;C&#39;</li>
+        <li>&lt; 60 → &#39;F&#39;</li>
+    </ul>
+    <hr>
+    </header>
+    <p>Bài làm:</p>
+
+
+    <input type="number" id = 'score' placeholder = "Enter the score">
+    <button id = 'scoresubmit' >Submit</button>
+
+    <div id = "showGrade"></div>
+
+    <script>
+
+        function checkGrade(score) {
+            let grade;
+            let answer = document.getElementById("showGrade");
+            if (score > 100 || score < 0 ) {
+                answer.innerHTML = `invalid number`;
+            } else {
+                if (score >= 80) {
+                    grade = 'A';
+                } else if (score >= 70) {
+                    grade = 'B';
+                } else if (score >= 60) {
+                    grade = 'C';
+                } else {
+                    grade = 'F';
+                }
+                console.log(grade);
+                answer.innerHTML = `Your Grade is ${grade}`;
+            } 
+
+            
+
+        }
+
+        document.getElementById("scoresubmit").onclick = function() {
+            let score = Number(document.getElementById("score").value)
+            checkGrade(score);
+            
+        }
+
+    </script>
+
+</body>
+</html>

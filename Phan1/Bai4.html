@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+    <h2>Bài 4: Tìm kiếm trong mảng</h2>
+    <h3>Mô tả bài toán:</h3>
+    <p>Viết hàm findStudent(students, name) để kiểm tra xem tên có tồn tại trong mảng sinh viên
+không. Trả về true/false</p>
+    </header>
+     <p>Bài làm:</p>
+    
+     <div id="student_array">Students: [ </div>
+     <br>
+    <input type="text" id="student_name" placeholder ="Enter student name...">
+    <button id="submit">Submit</button>
+    <hr>
+    <div id="proof"></div>
+
+     <script>
+        function findStudent(students, name) {
+            return students.includes(name);
+        }
+
+        let students = ["An", "Binh", "Chi", "Dung"];
+
+            for (student of students) {
+                document.getElementById("student_array").innerHTML += `
+                    <span> ${student}, &nbsp  </span> `    
+            }
+            document.getElementById("student_array").innerHTML += `]`
+
+        document.getElementById("submit").onclick = function() {
+            let name = document.getElementById("student_name").value;
+            let answer = findStudent(students, name);
+            console.log(answer);
+            if (answer) {
+                document.getElementById("proof").innerHTML = 
+                `<span>${name} found!</span>`
+            } else {
+                document.getElementById("proof").innerHTML = 
+                `<span>${name} does not exist in Array</span>`
+            }           
+        }
+     </script>
+</body>
+</html>

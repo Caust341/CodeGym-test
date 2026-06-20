@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2>Bài 5: Lọc phần tử trong mảng</h2>
+        <h3>Mô tả bài toán:</h3>
+        <p>Viết hàm calculateDiscount(price, discountPercent) để tính giá sau khi giảm giá. Hàm nhận vào
+            giá gốc và tỷ lệ giảm giá (%), trả về giá cuối cùng.</p>
+    </header>
+    <p>Bài làm:</p>
+
+    <span>Lengths: </span>
+    <input type="number" id="arraylength" placeholder="enter the number of Elements">
+    <button id="submitlength">Submit</button>
+    <hr>
+
+    <div id="adding_number" style="display: none;">
+        <input type="number" id="enumber" placeholder="enter the number...">
+        <button id="submitnumber">Submit</button>
+    </div>
+
+
+    <div id="process">Array: </div>
+
+    <script>
+        let processing = document.getElementById("process");
+        let addprompt = document.getElementById("adding_number");
+        const revertedprompt = addprompt.innerHTML;
+
+        function add(arr) {
+            let e_num = Number(document.getElementById("enumber").value)
+            arr.push(e_num);
+            processing.innerHTML += `
+                    <span>${e_num} </span>
+                `
+
+        }
+
+        function filterLargeNumbers(arr, threshold) {
+            processing.innerHTML += `<br><span>Filtered Array: </span>`;
+            for (num of arr.filter(num => num > threshold)) {
+                processing.innerHTML += `<span> ${num} </span>`;
+
+            }
+
+
+        }
+
+        document.getElementById("submitlength").onclick = function () {
+
+            let len = Number(document.getElementById("arraylength").value);
+            if (len > 0) {
+                let arr = [];
+                processing.innerHTML = "Array: "
+                addprompt.style.display = "block";
+                addprompt.innerHTML = revertedprompt;
+
+                document.getElementById("submitnumber").onclick = function () {
+                    if (arr.length < len) {
+                        add(arr);
+                        if (arr.length == len) {
+                            addprompt.innerHTML += `<p>Please choose a threshold.</p>`;
+                            document.getElementById("submitnumber").innerHTML = "Select";
+                            
+                            document.getElementById("submitnumber").onclick = function () {
+                            let threshold = Number(document.getElementById("enumber").value);
+                            filterLargeNumbers(arr, threshold);
+                            }
+
+
+                        }
+                    }
+
+                }
+
+            } else {
+                processing.innerHTML = `<p>invalid input</p>`
+            }
+        }
+    </script>
+</body>
+
+</html>

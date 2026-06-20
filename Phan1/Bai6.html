@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2>Bài 6: Tìm số lớn nhất</h2>
+        <h3>Mô tả bài toán:</h3>
+        <p>Viết hàm findMax(numbers) để tìm số lớn nhất trong mảng. Không dùng hàm Math.max(), sử
+            dụng vòng lặp.</p>
+    </header>
+    <p>Bài làm:</p>
+    <div id="unchanged_block">
+        <span id="title">Lengths: </span>
+        <input type="number" id="number" placeholder="enter the number">
+        <button id="submit" onclick="SubmitInterface()">Submit</button>
+        <button id="Max" onclick="findMax()" disabled = true>Max</button>
+        <button id="Reset" onclick="reset()">Reset</button>
+        <hr><div id="process">Array: </div>
+    </div>
+    
+    
+
+    <script>
+        let mode = "length";
+        let arr = [];
+        let len = 0;
+        const OG = document.getElementById("unchanged_block").innerHTML
+        let processing = document.getElementById("process");
+
+        function add(arr, len) {
+
+            let e_num = Number(document.getElementById("number").value)
+            arr.push(e_num);
+            processing.innerHTML += `
+                    <span>${e_num} </span>`
+
+            if (arr.length == len) {
+                document.getElementById("submit").disabled = true;
+            }
+        }
+
+
+        function reset() {
+            document.getElementById("unchanged_block").innerHTML = OG;
+            processing = document.getElementById("process");
+            len = 0;
+            arr = [];
+            mode = "length";
+        }
+
+        function findMax() {
+            let max = arr[0]
+            for (let i = 1; i < arr.length; ++i) {
+                if (max < arr[i]) {
+                    max = arr[i];
+                }
+            }
+            console.log(max);
+            processing.innerHTML += `<p>The max number of the array is: ${max}</p>`
+            document.getElementById("Max").disabled = true;
+            }
+
+        function SubmitInterface() {
+            if (mode === "length") {
+                processing.innerHTML = "Array: "
+                len = Number(document.getElementById("number").value);
+                if (len > 0) {
+                    document.getElementById("title").innerHTML = `<span>Numbers:</span>`;
+                    mode = "number"
+
+                } else {
+                    processing.innerHTML = `<p>invalid input</p>`
+                }
+            } else {
+                add(arr, len);
+                document.getElementById("Max").disabled = false;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

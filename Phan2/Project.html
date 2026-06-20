@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2>Student Management Program</h2>
+        <h5>Made by Nguyen Hoang Lan</h5>
+        <hr>
+    </header>
+
+    <div id="SubmitForm">
+        <p style="margin-bottom: 5px; font-weight: bolder; font-size:large">Student Form:</p>
+        <span>Name: </span><input type="text" placeholder="Enter the student name" style="width:70%" id="stu_name">
+        <br>
+        <span>ID: </span><input type="text" placeholder="Enter the student ID" style="width:40%; margin-left: 20px;" id="stu_id">
+        <button id="submit" onclick="add()">Submit</button>
+        <div id="Message"></div>
+    </div>
+    
+    <hr>
+    <h3 style="margin-bottom: 10px;">List Product</h3>
+    <div id="buttonContainer">
+    <button id="sortName" onclick="showAll()">Sort by name</button>
+    <button id="sortId" onclick="showAll()">Sort by Id</button>
+    </div>
+    <table border="1">
+        <tr style="background-color: aquamarine">
+            <th >#</th>
+            <th style="width: auto; ">Name</th>
+            <th style="width: auto; ">Id</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tbody id="list">
+        </tbody>
+    </table>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>

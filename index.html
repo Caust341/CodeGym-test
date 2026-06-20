@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeGymTest</title>
+
+    <style>
+        table, td {
+            border: 1px groove black;
+            text-align: center;
+        }
+
+        #MenuScreen button {
+            width: 75%;
+        }
+    </style>
+    
+</head>
+<body>
+<header>
+    <h1>CODEGYM TEST</h1>
+    <p>Chọn một trong những nút để xem các bài:</p>
+</header>
+    <nav id="MenuScreen">
+        <table style="width: 60%">
+            <tr>
+                <td><button onclick="showPage(`Home`)">Home</button></td>
+                <td><button onclick="showPage(`Phan1/Bai1.html`)">Bai1</button></td>
+                <td><button onclick="showPage(`Phan1/Bai2.html`)">Bai2</button></td>
+                <td><button onclick="showPage(`Phan1/Bai3.html`)">Bai3</button></td>
+            </tr> <tr>
+                <td><button onclick="showPage(`Phan1/Bai4.html`)">Bai4</button></td>
+                <td><button onclick="showPage(`Phan1/Bai5.html`)">Bai5</button></td>
+                <td><button onclick="showPage(`Phan1/Bai6.html`)">Bai6</button></td>
+                <td><button onclick="showPage(`Phan2/Project.html`)">Project</button></td>
+            </tr>
+        </table>
+    </nav>
+    <hr>
+
+    <div id="content">
+        <p id="defaultText">Please select one of the buttons above to continue!</p>
+        <iframe id="pageViewer" style="display: none; width:100%; height:75vh"></iframe>
+    </div>
+
+    <script>
+        function showPage(page) {
+            const defaultText = document.getElementById("defaultText");
+            const iframe = document.getElementById("pageViewer");
+
+            if (page === "Home") {
+                defaultText.style.display = "block";
+                iframe.style.display = "none";
+                iframe.src = "";
+            } else {
+                defaultText.style.display = "none";
+                iframe.style.display = "block";
+                iframe.src = page;
+                 
+            }
+        }
+    </script>
+
+</body>
+</html>
